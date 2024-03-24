@@ -39,12 +39,14 @@ export default function Doctor({ item }: any) {
       <Divider />
       <CardBody>
         <p className="text-small text-default-500">{item.address}</p>
-        <span className="text-xs py-2 text-end">{getStatus(item.status)}</span>
+        <span className="text-xs py-2">{getStatus(item.status)}</span>
       </CardBody>
       <Divider />
       <CardFooter>
         <Link as={`/booking/${item.id}`} href="/booking/[slug]">
-          Book Online
+          <Chip color="warning" variant="shadow" radius="sm">
+            Book Online
+          </Chip>
         </Link>
       </CardFooter>
     </Card>

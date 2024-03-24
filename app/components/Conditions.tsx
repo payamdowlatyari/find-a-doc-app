@@ -1,16 +1,18 @@
-import { Select, SelectItem } from "@nextui-org/react";
-import { conditions_array } from "../data/data";
+import { Chip } from "@nextui-org/react";
+import { specialties_array } from "../data/data";
 
-export default function DocList() {
+export default function Conditions({ specialty }: any) {
   return (
-    <Select
-      label="Condition, doctor..."
-      labelPlacement="outside"
-      className="max-w-sm justify-start"
-    >
-      {conditions_array.map((condition) => (
-        <SelectItem key={condition.name}>{condition.name}</SelectItem>
-      ))}
-    </Select>
+    <div className="flex gap-4 max-w-sm justify-start p-4">
+      {specialties_array
+        .filter((item) => item.title === specialty)
+        .map((condition) => (
+          <>
+            {condition.conditions.map((i) => {
+              return <Chip key={i}>{i}</Chip>;
+            })}
+          </>
+        ))}
+    </div>
   );
 }

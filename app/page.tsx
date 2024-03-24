@@ -1,7 +1,6 @@
 "use client";
 
 import Doctors from "./components/Doctors";
-// import GetLocation from "./components/utils/getLocation";
 
 export default function Home() {
   return (
@@ -9,7 +8,6 @@ export default function Home() {
       <div className="mb-32 mt-8 lg:w-full lg:mb-0 lg:grid-cols-4 lg:text-left">
         <Doctors />
       </div>
-      {/* <GetLocation /> */}
     </main>
   );
 }

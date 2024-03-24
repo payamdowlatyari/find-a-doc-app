@@ -4,29 +4,44 @@ import {
   NavbarContent,
   NavbarItem,
   Link,
+  Button,
 } from "@nextui-org/react";
+import { ThemeSwitcher } from "./ThemeSwitcher";
 
 export default function Header() {
   return (
     <Navbar className="h-20 w-screen">
-      <NavbarContent justify="start">
+      <NavbarContent>
         <NavbarBrand className="mr-4">
-          <Link href="/">
-            <p className="hidden sm:block font-bold text-inherit">Find Doc</p>
+          <Link href="/" color="foreground">
+            <p className="hidden sm:block font-bold text-inherit">FindaDoc</p>
           </Link>
         </NavbarBrand>
       </NavbarContent>
-      <NavbarContent as="div" className="items-center" justify="end">
-        <NavbarContent className="hidden sm:flex gap-4">
-          <NavbarItem isActive>
-            <Link href="#" aria-current="page" color="secondary">
+      <NavbarContent>
+        <NavbarContent>
+          <NavbarItem>
+            <Link href="/" color="foreground">
               Providers
             </Link>
           </NavbarItem>
           <NavbarItem>
-            <Link color="foreground" href="#">
-              Contact
+            <Link href="/about" color="foreground">
+              About
             </Link>
+          </NavbarItem>
+        </NavbarContent>
+        <NavbarContent justify="end">
+          <NavbarItem className="hidden lg:flex">
+            <Link href="#">Login</Link>
+          </NavbarItem>
+          <NavbarItem>
+            <Button as={Link} color="primary" href="#" variant="flat">
+              Sign Up
+            </Button>
+          </NavbarItem>
+          <NavbarItem>
+            <ThemeSwitcher />
           </NavbarItem>
         </NavbarContent>
       </NavbarContent>

@@ -1,9 +1,8 @@
-import { Button, Divider, Select, SelectItem, Input } from "@nextui-org/react";
+import { Button, Select, SelectItem, Input, Divider } from "@nextui-org/react";
 import { conditions_array, doctors_array, insurance_array } from "../data/data";
 import Doctor from "./Doctor";
 import { useState, useEffect } from "react";
 import Primary from "./Primary";
-var zipcodes = require("zipcodes-perogi");
 
 export default function Doctors() {
   const [filteredDoctors, setFilteredDoctors] = useState(doctors_array);
@@ -13,10 +12,6 @@ export default function Doctors() {
   const [results, setResults] = useState(false);
 
   useEffect(() => {
-    let myloc = zipcodes.lookup(location);
-
-    console.log(myloc);
-
     setFilteredDoctors(
       doctors_array.filter((doctor) => {
         return (
@@ -54,7 +49,7 @@ export default function Doctors() {
             ))}
           </Select>
         </div>
-        <div className=" h-24 w-60 p-1 m-1">
+        <div className="h-24 w-60 p-1 m-1">
           <Select
             label="Insurance..."
             labelPlacement="outside"
@@ -70,7 +65,7 @@ export default function Doctors() {
           </Select>
         </div>
 
-        <div className=" h-24 w-60 p-1 m-1">
+        <div className="h-24 w-60 p-1 m-1">
           <Input
             type="text"
             label="Location..."
@@ -86,20 +81,14 @@ export default function Doctors() {
       </div>
 
       {results && insurance && specialty && (
-        <div className="space-y-2 my-10">
-          <p className="text-medium text-default-400">
+        <div className="space-y-2 my-5">
+          <Divider />
+          <p className="text-medium text-default-400 py-4">
             Results for {specialty} accepting {insurance}
           </p>
           {renderSelectedDoctors()}
         </div>
       )}
-
-      <div className="space-y-2 my-10">
-        <Divider className="my-4" />
-        <p className="text-medium text-default-400">
-          Family Physicians and Primary Care Doctors
-        </p>
-      </div>
 
       <Primary />
     </>
