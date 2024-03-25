@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
 import GoogleMapReact from "google-map-react";
+import { AiFillHome } from "react-icons/ai";
 
-const AnyReactComponent = ({ text }: any) => (
+// a circle showing the user's location on map
+const UserLocation = ({ text }: any) => (
   <div
     style={{
       color: "white",
@@ -15,10 +17,11 @@ const AnyReactComponent = ({ text }: any) => (
       transform: "translate(-50%, -50%)",
     }}
   >
-    {text}
+    {text} <AiFillHome />
   </div>
 );
 
+// gets users geaolocation and uses it to render the map
 export default function SimpleMap({ loc }: any) {
   const [position, setPosition] = useState({ latitude: 0, longitude: 0 });
 
@@ -35,6 +38,7 @@ export default function SimpleMap({ loc }: any) {
     }
   }, []);
 
+  // default lat and lng for zipcode 95818
   const defaultProps = {
     center: {
       lat: 38.554563,
@@ -44,14 +48,13 @@ export default function SimpleMap({ loc }: any) {
   };
 
   return (
-    // Important! Always set the container height explicitly
     <div style={{ height: "75vh", width: "100%" }}>
       <GoogleMapReact
         bootstrapURLKeys={{ key: "" }}
         defaultCenter={defaultProps.center}
         defaultZoom={defaultProps.zoom}
       >
-        <AnyReactComponent
+        <UserLocation
           lat={position.latitude}
           lng={position.longitude}
           text={loc}

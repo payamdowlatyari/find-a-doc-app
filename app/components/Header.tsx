@@ -8,19 +8,21 @@ import {
 } from "@nextui-org/react";
 import { ThemeSwitcher } from "./ThemeSwitcher";
 
+// responsive navbar
+// TODO: authentiction should be implemented
 export default function Header() {
   return (
     <Navbar className="h-20 w-screen">
       <NavbarContent>
         <NavbarBrand className="mr-4">
           <Link href="/" color="foreground">
-            <p className="hidden sm:block font-bold text-inherit">FindaDoc</p>
+            <p className="sm:block font-bold text-inherit">FindaDoc</p>
           </Link>
         </NavbarBrand>
       </NavbarContent>
       <NavbarContent>
         <NavbarContent>
-          <NavbarItem>
+          <NavbarItem className="hidden lg:flex">
             <Link href="/" color="foreground">
               Providers
             </Link>

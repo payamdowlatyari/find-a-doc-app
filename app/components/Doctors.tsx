@@ -3,12 +3,17 @@ import { conditions_array, doctors_array, insurance_array } from "../data/data";
 import Doctor from "./Doctor";
 import { useState, useEffect } from "react";
 import Primary from "./Primary";
+import { locationCompare } from "./utils/locationValid";
 
+// main components that filters doctors array of objects based on condiion
+// insurance plan and location
+// TODO: a full list of zipcodes should be tested
+// Can use an API for zipcode validation
 export default function Doctors() {
   const [filteredDoctors, setFilteredDoctors] = useState(doctors_array);
   const [specialty, setSpecialty] = useState("");
   const [insurance, setInsurance] = useState("");
-  const [location, setLocation] = useState("95818");
+  const [location, setLocation] = useState("");
   const [results, setResults] = useState(false);
 
   useEffect(() => {
@@ -16,12 +21,14 @@ export default function Doctors() {
       doctors_array.filter((doctor) => {
         return (
           specialty === doctor.specialty &&
-          doctor.insurances.includes(insurance)
+          doctor.insurances.includes(insurance) &&
+          (location === "" || locationCompare(doctor, location))
         );
       }),
     );
   }, [specialty, insurance]);
 
+  // renders filtered list
   const renderSelectedDoctors = () => {
     return (
       <div className="flex flex-wrap items-start m-6">
@@ -33,8 +40,8 @@ export default function Doctors() {
   };
   return (
     <>
-      <div className="flex w-full flex-wrap items-end md:flex-nowrap mb-6 md:mb-0 gap-4">
-        <div className="h-24 w-60 p-1 m-1">
+      <div className="flex w-full flex-wrap justify-center items-end md:flex-nowrap mb-6 md:mb-0 gap-4">
+        <div className="h-20 w-60 p-1 m-1">
           <Select
             label="Condition, doctor..."
             labelPlacement="outside"
@@ -49,7 +56,7 @@ export default function Doctors() {
             ))}
           </Select>
         </div>
-        <div className="h-24 w-60 p-1 m-1">
+        <div className="h-20 w-60 p-1 m-1">
           <Select
             label="Insurance..."
             labelPlacement="outside"
@@ -64,8 +71,7 @@ export default function Doctors() {
             ))}
           </Select>
         </div>
-
-        <div className="h-24 w-60 p-1 m-1">
+        <div className="h-20 w-48 md:w-56 p-1 m-1">
           <Input
             type="text"
             label="Location..."
@@ -74,16 +80,17 @@ export default function Doctors() {
             onChange={(e) => setLocation(e.target.value)}
           />
         </div>
-
-        <div className="p-2 m-2 self-center">
-          <Button onPress={() => setResults(true)}>Search</Button>
+        <div className="p-2 m-2 self-end">
+          <Button color="primary" onPress={() => setResults(true)}>
+            Search
+          </Button>
         </div>
       </div>
 
       {results && insurance && specialty && (
         <div className="space-y-2 my-5">
           <Divider />
-          <p className="text-medium text-default-400 py-4">
+          <p className="text-medium text-default-600 py-4 mx-4">
             Results for {specialty} accepting {insurance}
           </p>
           {renderSelectedDoctors()}

@@ -2,8 +2,9 @@
 
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
-import { SunIcon, MoonIcon } from "./Icons";
+import { SunIcon, MoonIcon } from "./ui/Icons";
 
+// switches theme dark and light
 export function ThemeSwitcher() {
   const [mounted, setMounted] = useState(false);
   const { theme, setTheme } = useTheme();

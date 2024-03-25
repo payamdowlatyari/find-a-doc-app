@@ -1,5 +1,6 @@
 import { Code } from "@nextui-org/react";
 
+// documented details of the project, technologies used, and plan for future iterarions
 export default function AboutPage() {
   return (
     <div className="flex flex-col justify-evenly m-auto p-4 max-w-4xl">
@@ -51,7 +52,8 @@ export default function AboutPage() {
         <p className="text-small pl-2 font-semibold">
           <a
             className="text-primary hover:text-primary-500 duration-300"
-            href="https://nextui.org/"
+            href="https://tailwindcss.com/"
+            target="_blank"
           >
             Tailwind
           </a>
@@ -60,16 +62,8 @@ export default function AboutPage() {
         <p className="text-small pl-2 font-semibold">
           <a
             className="text-primary hover:text-primary-500 duration-300"
-            href="https://tailwindcss.com/"
-          >
-            NextUI
-          </a>{" "}
-          (a React UI library)
-        </p>
-        <p className="text-small pl-2 font-semibold">
-          <a
-            className="text-primary hover:text-primary-500 duration-300"
             href="https://www.framer.com/motion/"
+            target="_blank"
           >
             Framer Motion
           </a>{" "}
@@ -79,17 +73,29 @@ export default function AboutPage() {
           <a
             className="text-primary hover:text-primary-500 duration-300"
             href="https://github.com/google-map-react/google-map-react?tab=readme-ov-file#readme"
+            target="_blank"
           >
-            Google-map-react
+            google-map-react
           </a>{" "}
           (Google Maps library for React)
         </p>
         <p className="text-small pl-2 font-semibold">
           <a
             className="text-primary hover:text-primary-500 duration-300"
-            href="https://www.npmjs.com/package/zipcodes-perogi"
+            href="https://www.npmjs.com/package/@demark-pro/react-booking-calendar"
+            target="_blank"
           >
-            Zipcode-perogi
+            react-booking-calendar
+          </a>{" "}
+          (Booking library for React)
+        </p>
+        <p className="text-small pl-2 font-semibold">
+          <a
+            className="text-primary hover:text-primary-500 duration-300"
+            href="https://www.npmjs.com/package/zipcodes-perogi"
+            target="_blank"
+          >
+            zipcode-perogi
           </a>{" "}
           (a zipcode lookup node module)
         </p>
@@ -97,7 +103,7 @@ export default function AboutPage() {
       <div className="p-3 justify-start">
         <h3 className="text-lg font-semibold">Backend</h3>
         <p className="text-small p-2">
-          The backend functionally has not been implemented for this prototype
+          The backend functionality has not been implemented for this prototype
           but we can develop API and database for future versions. Here are some
           suggestions:
         </p>
@@ -155,6 +161,77 @@ export default function AboutPage() {
           make that process much easier and more secure. The provides the
           possibility to add OAuth from known platforms (Google, GitHub, etc.).
         </p>
+      </div>
+      <div className="p-3 justify-start">
+        <h3 className="text-lg font-semibold">Data Models</h3>
+
+        <p className="text-small p-2">
+          Static data models have been used for the purpose of testing the demo
+          Here is the basic schema:
+        </p>
+
+        <p className="text-small p-2 overflow-auto">
+          <Code size="sm" className="max-w-4xl">
+            {`Doctor = {
+            id: 'number',
+            name: 'string',
+            specialty: 'string',
+            address: 'string',
+            zipcode: 'string',
+            status: 'string',
+            ratings :'number[]',
+            visit: 'string[]',
+            phone: 'string',
+            avatar: 'string',
+            email: 'string',
+            insurances: 'string[]',
+        }`}
+          </Code>
+        </p>
+        <p className="text-small p-2 overflow-auto">
+          <Code size="sm" className="max-w-4xl">
+            {`
+        Specialty = {
+            id: 'number',
+            title: 'string',
+            conditions: 'string[]',
+        }`}
+          </Code>
+        </p>
+        <p className="text-small p-2 overflow-auto">
+          <Code size="sm" className="max-w-4xl">
+            {`
+        
+        Conditions = {
+            id: 'number',
+            name: 'string',
+            doctor: 'string',
+        }`}
+          </Code>
+        </p>
+        <p className="text-small p-2 overflow-auto">
+          <Code size="sm" className="max-w-4xl">
+            {`
+        
+        Cities = {
+            id: 'number',
+            name: 'string',
+        }`}
+          </Code>
+        </p>
+        <p className="text-small p-2 overflow-auto">
+          <Code size="sm" className="max-w-4xl">
+            {`
+        
+        Insurance = {
+            id: 'number',
+            name: 'string',
+        }`}
+          </Code>
+        </p>
+      </div>
+      <div className="p-3 justify-start">
+        <h3 className="text-lg font-semibold">Database</h3>
         <p className="text-small pl-2 font-semibold">
           <a
             className="text-primary hover:text-primary-500 duration-300"
@@ -209,6 +286,19 @@ export default function AboutPage() {
           >
             Demo{" "}
           </a>
+        </p>
+      </div>
+
+      <div className="p-3 justify-start">
+        <h3 className="text-lg font-semibold">Future iterations and todos</h3>
+        <p className="text-small p-2">
+          Calendar needs to be fully implemented and tested
+        </p>
+        <p className="text-small p-2">
+          Doctors locations should be implemented on the map and tested
+        </p>
+        <p className="text-small p-2">
+          Booking functionality needs to be added
         </p>
       </div>
 

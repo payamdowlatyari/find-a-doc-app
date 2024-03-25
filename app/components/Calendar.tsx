@@ -8,6 +8,8 @@ const reserved = [
   },
 ];
 
+// just testing this library
+// TODO: needs to be fully implemented and tested
 export function MyBookingCalendar() {
   const [selectedDates, setSelectedDates] = useState([]);
   const handleChange = (e: any) => setSelectedDates(e);

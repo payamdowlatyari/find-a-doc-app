@@ -19,11 +19,12 @@ Several other UI libraries are used for different purposes:
 - [Tailwind](https://tailwindcss.com/) (a utility-first CSS framework)
 - [Framer Motion](https://www.framer.com/motion/) (animation library)
 - [Google-map-react](https://github.com/google-map-react/google-map-react?tab=readme-ov-file#readme) (Google Maps library for React)
+- [react-booking-calendar](https://www.npmjs.com/package/@demark-pro/react-booking-calendar) (Booking library for React)
 - [Zipcode-perogi](https://www.npmjs.com/package/zipcodes-perogi) (a zipcode lookup node module)
 
 ### Backend
 
-The backend functionally has not been implemented for this prototype but we can develop API and database for future versions.
+The backend functionality has not been implemented for this prototype but we can develop API and database for future versions.
 
 Here are a few suggestions:
 
@@ -35,6 +36,50 @@ Here are a few suggestions:
 ### Auth
 
 Authentication can be implemented manually using libraries such as [jwt](https://jwt.io/) (JSON Web Token). However, frameworks like [auth.js](https://authjs.dev/) or [passport.js](https://www.passportjs.org/) make that process much easier and more secure. The provides the possibility to add OAuth from known platforms (Google, GitHub, etc.).
+
+### Data Models
+
+Static data models have been used for the purpose of testing the demo
+Here is the basic schema:
+
+```bash
+ Doctor {
+   id: “number”,
+   name: “string”,
+   specialty: “string”,
+   address: “string”,
+   zipcode: “string”,
+   status: “string”,
+   ratings : “number[]”,
+   visit: “string[]”,
+   phone: “string”,
+   avatar: “string”,
+   email: “string”,
+   insurances: “string[]”,
+ },
+
+Specialty {
+   id: “number”,
+   title: “string”,
+   conditions: “string[]”,
+}
+
+Conditions {
+   id: “number”,
+   name: “string”,
+   doctor: “string”,
+}
+
+Cities {
+   id: “number”,
+   name: “string”,
+}
+
+Insurance {
+   id: “number”,
+   name: “string”,
+}
+```
 
 ### Database
 
@@ -49,6 +94,12 @@ Authentication can be implemented manually using libraries such as [jwt](https:/
 
 Repository: [https://github.com/payamdowlatyari/find-a-doc-app](https://github.com/payamdowlatyari/find-a-doc-app)
 Demo: [https://find-a-doc-app.vercel.app/](https://find-a-doc-app.vercel.app/)
+
+### Future iterations and todos
+
+- Calendar needs to be fully implemented and tested
+- Doctors' locations should be implemented on the map and tested
+- Booking functionality needs to be added
 
 ### Run the demo locally
 
