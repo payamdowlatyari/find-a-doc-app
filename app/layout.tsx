@@ -8,7 +8,7 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "FindaDoc",
-  description: "Find medical care and book a doctor in your area",
+  description: "Find the best medical care",
 };
 
 export default function RootLayout({

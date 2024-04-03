@@ -58,7 +58,7 @@ export default function DoctorBooking({ item }: any) {
           </div>
         </CardFooter>
       </Card>
-      <SimpleMap loc={"Home"} />
+      <SimpleMap />
     </div>
   );
 }

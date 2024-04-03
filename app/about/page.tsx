@@ -170,8 +170,8 @@ export default function AboutPage() {
           Here is the basic schema:
         </p>
 
-        <p className="text-small p-2 overflow-auto">
-          <Code size="sm" className="max-w-4xl">
+        <p className="text-small p-2 max-w-4xl overflow-auto">
+          <Code size="sm">
             {`Doctor = {
             id: 'number',
             name: 'string',

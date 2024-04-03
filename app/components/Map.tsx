@@ -3,7 +3,7 @@ import GoogleMapReact from "google-map-react";
 import { AiFillHome } from "react-icons/ai";
 
 // a circle showing the user's location on map
-const UserLocation = ({ text }: any) => (
+const UserLocation = (text: any) => (
   <div
     style={{
       color: "white",
@@ -17,12 +17,12 @@ const UserLocation = ({ text }: any) => (
       transform: "translate(-50%, -50%)",
     }}
   >
-    {text} <AiFillHome />
+    <AiFillHome />
   </div>
 );
 
 // gets users geaolocation and uses it to render the map
-export default function SimpleMap({ loc }: any) {
+export default function SimpleMap() {
   const [position, setPosition] = useState({ latitude: 0, longitude: 0 });
 
   useEffect(() => {
@@ -57,7 +57,7 @@ export default function SimpleMap({ loc }: any) {
         <UserLocation
           lat={position.latitude}
           lng={position.longitude}
-          text={loc}
+          text={""}
         />
       </GoogleMapReact>
     </div>

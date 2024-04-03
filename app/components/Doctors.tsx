@@ -15,18 +15,22 @@ export default function Doctors() {
   const [insurance, setInsurance] = useState("");
   const [location, setLocation] = useState("");
   const [results, setResults] = useState(false);
+  const [showAll, setShowAll] = useState(false);
 
   useEffect(() => {
     setFilteredDoctors(
       doctors_array.filter((doctor) => {
         return (
-          specialty === doctor.specialty &&
-          doctor.insurances.includes(insurance) &&
-          (location === "" || locationCompare(doctor, location))
+          (showAll && doctor.id) ||
+          (specialty === doctor.specialty &&
+            doctor.insurances.includes(insurance) &&
+            (location === "" || locationCompare(doctor, location)))
         );
       }),
     );
-  }, [specialty, insurance]);
+
+    console.log(filteredDoctors);
+  }, [specialty, insurance, showAll]);
 
   // renders filtered list
   const renderSelectedDoctors = () => {
@@ -38,6 +42,7 @@ export default function Doctors() {
       </div>
     );
   };
+
   return (
     <>
       <div className="flex w-full flex-wrap justify-center items-end md:flex-nowrap mb-6 md:mb-0 gap-4">
@@ -81,22 +86,44 @@ export default function Doctors() {
           />
         </div>
         <div className="p-2 m-2 self-end">
-          <Button color="primary" onPress={() => setResults(true)}>
+          <Button
+            color="primary"
+            onPress={() => {
+              setResults(true);
+              setShowAll(false);
+            }}
+          >
             Search
+          </Button>
+        </div>
+        <div className="p-2 m-2 self-end">
+          <Button
+            color="primary"
+            onPress={() => {
+              setResults(false);
+              setShowAll(true);
+            }}
+          >
+            Show All
           </Button>
         </div>
       </div>
 
-      {results && insurance && specialty && (
+      {(showAll || (results && insurance && specialty)) && (
         <div className="space-y-2 my-5">
           <Divider />
-          <p className="text-medium text-default-600 py-4 mx-4">
-            Results for {specialty} accepting {insurance}
-          </p>
+          {results ? (
+            <p className="text-medium text-default-600 py-4 mx-4">
+              Results for {specialty} accepting {insurance}
+            </p>
+          ) : (
+            <p className="text-medium text-default-600 py-4 mx-4">
+              Results for all doctors
+            </p>
+          )}
           {renderSelectedDoctors()}
         </div>
       )}
-
       <Primary />
     </>
   );
