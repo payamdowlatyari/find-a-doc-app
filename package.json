@@ -22,6 +22,7 @@
     "react": "^18",
     "react-dom": "^18",
     "react-icons": "^5.0.1",
+    "react-schedule-meeting": "^4.2.3",
     "zip-codes-lookup": "^1.1.0",
     "zip-state": "^1.0.3",
     "zipcodes": "^8.0.0",

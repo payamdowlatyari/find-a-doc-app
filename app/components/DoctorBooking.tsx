@@ -7,12 +7,12 @@ import {
   Avatar,
 } from "@nextui-org/react";
 import SimpleMap from "./Map";
-import Calendar from "@demark-pro/react-booking-calendar";
 import { Acceptance } from "./ui/Acceptance";
 import { Rating } from "./ui/Rating";
 import { Office, Video } from "./ui/Visit";
 import { FcPhone, FcFeedback } from "react-icons/fc";
 import { MdLocationPin } from "react-icons/md";
+import TimeSlots from "./TimeSlots";
 
 // booking details including map and calendar
 // TODO: doctors' locations should be implemented in the map
@@ -42,7 +42,7 @@ export default function DoctorBooking({ item }: any) {
         </CardHeader>
         <Divider />
         <CardBody>
-          <Calendar />
+        <TimeSlots />
         </CardBody>
         <CardFooter>
           <div className="flex flex-col gap-2">
