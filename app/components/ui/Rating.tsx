@@ -11,7 +11,7 @@ export const Rating = ({ ratings }: any) => {
   if (count > 0) average = parseFloat((sum / count).toFixed(2));
   return (
     <div className="text-sm flex flex-row gap-1">
-      <span className=" text-lg text-yellow-500">
+      <span className="text-sm text-yellow-500">
         <RiStarFill />{" "}
       </span>
       {average} {"("} {count} {")"}{" "}

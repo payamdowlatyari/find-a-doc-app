@@ -38,12 +38,12 @@ export default function Header() {
         </NavbarContent>
         <NavbarContent justify="end">
           <NavbarItem className="hidden lg:flex">
-            <Link href="#" color="foreground">
+            <Link href="/auth" color="foreground">
               Login
             </Link>
           </NavbarItem>
           <NavbarItem>
-            <Button as={Link} href="#" variant="flat">
+            <Button as={Link} href="/auth" variant="flat">
               Sign Up
             </Button>
           </NavbarItem>
